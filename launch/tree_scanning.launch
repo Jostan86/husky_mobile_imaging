@@ -1,0 +1,19 @@
+<launch>
+
+<!--     <include file="$(find realsense2_camera)/launch/rs_rgbd.launch">-->
+<!--         <arg name="enable_depth" value="true" />-->
+<!--         <arg name="align_depth" value="true"/>-->
+<!--         <arg name="enable_pointcloud" value="true" />-->
+<!--         <arg name="color_width" value="640" />-->
+<!--         <arg name="color_height" value="480" />-->
+<!--         <arg name="color_fps" value="30" />-->
+<!--     </include> &ndash;&gt;-->
+
+    <node name="arduino_serial_node" pkg="rosserial_python" type="serial_node.py" output="screen" args="/dev/ttyACM0" />
+    <node name="data_recorder" pkg="husky_mobile_imaging" type="record_data.py" output="screen" />
+    <node name="joy_listener" pkg="husky_mobile_imaging" type="joy_listener.py" output="screen" />
+    <node name="actuator_scan_server" pkg="husky_mobile_imaging" type="actuator_scan_service.py" output="screen" />
+
+<!--     <node name="reach_gps_server" pkg="reach_ros_node" type="reach_serial.py" output="screen" /> -->
+
+</launch>
